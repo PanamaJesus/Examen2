@@ -1,0 +1,256 @@
+{% extends "base/base.html" %}
+
+{% block title %} LIST TASKS VIEW {% endblock title %}
+
+{% block content %}
+        <a href="{% url 'tasks:create_task' %}" class="btn btn-outline-success form-control">CREATE A NEW TASK </a>
+
+<div class="d-flex justify-content-center gap-2 mt-3">
+
+    <button class="btn btn-secondary" onclick="mostrar('soloid')">Pendientes (id's)</button>
+    <button class="btn btn-secondary" onclick="mostrar('soloidtitle')">Pendientes (id's y titles)</button>
+    <button class="btn btn-secondary" onclick="mostrar('sinRidTitle')">Pendientes sin R (id's y titles)</button>
+    <button class="btn btn-secondary" onclick="mostrar('todoiduser')">Pendientes (id's y user_id)</button>
+    <button class="btn btn-secondary" onclick="mostrar('Riduser')">Pendientes R (id's y user_id)</button>
+    <button class="btn btn-secondary" onclick="mostrar('sinriduser')">Pendientes sin R (id's y user_id)</button>
+</div>
+
+<br></br>
+<div id="soloid">
+<h5 class="card-title">Todos los pendientes (solo ID)</h5>
+    <table class="table" >
+        <thead>
+            <th>ID</th>
+            <th>STATUS</th>
+            <th>CHANGE</th>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+                <tr>
+                    <td>{{ task.id }}</td>
+                    <td>
+                        {% if task.status %}
+                            Complete
+                        {% else %}
+                            Incomplete
+                        {% endif %}
+                        </td>
+                        <td><a href="{% url 'tasks:update_task' task.id %}" class="btn btn-warning">Update</a></td>                
+                </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div id="soloidtitle" style="display: none;">
+<h5 class="card-title">Lista de todos los pendientes (IDs y Titles)</h5>
+    <table class="table" >
+        <thead>
+            <th>ID</th>
+            <th>TITLE</th>
+            <th>STATUS</th>
+            <th>CHANGE</th>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+                <tr>
+                    <td>{{ task.id }}</td>
+                    <td>{{ task.title }}</td>
+                    <td>
+                        {% if task.status %}
+                            Complete
+                        {% else %}
+                            Incomplete
+                        {% endif %}
+                        </td>
+                        <td><a href="{% url 'tasks:update_task' task.id %}" class="btn btn-warning">Update</a></td>                
+                </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div id="sinRidTitle" style="display: none;">
+    <h5 class="card-title">Lista de todos los pendientes sin resolver (ID y Title)</h5>
+     <table class="table" >
+        <thead>
+            <th>ID</th>
+            <th>TITLE</th>
+            <th>STATUS</th>
+            <th>CHANGE</th>
+        </thead>
+        <tbody>
+            {% for task in tasks_sinR %}
+                <tr>
+                    <td>{{ task.id }}</td>
+                    <td>{{ task.title }}</td>
+                    <td>
+                        {% if task.status %}
+                            Complete
+                        {% else %}
+                            Incomplete
+                        {% endif %}
+                        </td>
+                        <td><a href="{% url 'tasks:update_task' task.id %}" class="btn btn-warning">Update</a></td>
+
+                        
+                                        
+                </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div id="RidTitle" style="display: none;"> 
+    <h5 class="card-title">Lista de todos los pendientes resueltos (ID y Title)</h5>
+     <table class="table" >
+        <thead>
+            <th>ID</th>
+            <th>TITLE</th>
+            <th>STATUS</th>
+            <th>CHANGE</th>
+        </thead>
+        <tbody>
+            {% for task in tasks_R %}
+                <tr>
+                    <td>{{ task.id }}</td>
+                    <td>{{ task.title }}</td>
+                    <td>
+                        {% if task.status %}
+                            Complete
+                        {% else %}
+                            Incomplete
+                        {% endif %}
+                        </td>
+                        <td><a href="{% url 'tasks:update_task' task.id %}" class="btn btn-warning">Update</a></td>
+
+                        
+                                        
+                </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div id="todoiduser" style="display: none;">
+        <h5 class="card-title">Lista de todos los pendientes (IDs y userID)</h5>
+     <table class="table" >
+        <thead>
+            <th>ID</th>
+            <th>CREATOR</th>
+            <th>STATUS</th>
+            <th>CHANGE</th>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+                <tr>
+                    <td>{{ task.id }}</td>
+                    <td>{{ task.creator }}</td>
+                    <td>
+                        {% if task.status %}
+                            Complete
+                        {% else %}
+                            Incomplete
+                        {% endif %}
+                        </td>
+                        <td><a href="{% url 'tasks:update_task' task.id %}" class="btn btn-warning">Update</a></td>
+
+                        
+                                        
+                </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div id="Riduser" style="display: none;">
+    <h5 class="card-title">Lista de todos los pendientes resueltos (ID y userID)</h5>
+    <table class="table" >
+        <thead>
+            <th>ID</th>
+            <th>CREATOR</th>
+            <th>STATUS</th>
+            <th>CHANGE</th>
+        </thead>
+        <tbody>
+            {% for task in tasks_R %}
+                <tr>
+                    <td>{{ task.id }}</td>
+                    <td>{{ task.creator }}</td>
+                    <td>
+                        {% if task.status %}
+                            Complete
+                        {% else %}
+                            Incomplete
+                        {% endif %}
+                        </td>
+                        <td><a href="{% url 'tasks:update_task' task.id %}" class="btn btn-warning">Update</a></td>
+
+                        
+                                        
+                </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div id="sinriduser" style="display: none;">
+    <h5 class="card-title">Lista de todos los pendientes sin resolver (ID y userID)</h5>
+    <table class="table" >
+        <thead>
+            <th>ID</th>
+            <th>CREATOR</th>
+            <th>STATUS</th>
+            <th>CHANGE</th>
+        </thead>
+        <tbody>
+            {% for task in tasks_sinR %}
+                <tr>
+                    <td>{{ task.id }}</td>
+                    <td>{{ task.creator }}</td>
+                    <td>
+                        {% if task.status %}
+                            Complete
+                        {% else %}
+                            Incomplete
+                        {% endif %}
+                        </td>
+                        <td><a href="{% url 'tasks:update_task' task.id %}" class="btn btn-warning">Update</a></td>
+
+                        
+                                        
+                </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function mostrar(idMostrar) {
+        const secciones = [
+            'soloid', 'soloidtitle', 'sinRidTitle',
+            'todoiduser', 'Riduser', 'sinriduser'
+        ];
+
+        secciones.forEach(function(id) {
+            const seccion = document.getElementById(id);
+            if (seccion) {
+                seccion.style.display = (id === idMostrar) ? 'block' : 'none';
+            }
+        });
+    }
+
+    // Mostrar la primera por defecto
+    window.onload = function() {
+        mostrar('soloid');
+    }
+</script>
+
+{% endblock content %}

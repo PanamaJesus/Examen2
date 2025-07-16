@@ -1,0 +1,14 @@
+{% extends "base/base.html" %}
+
+{% block title %} CRETE A NEW USER VIEW {% endblock title %}
+
+{% block content %}
+
+    <form action="" method="post">
+        {% csrf_token %}
+            {{ form }}
+            <button type="submit" class="btn btn-success">CREATE A NEW USER</button>
+            <a href="{% url 'users:list_user' %}" class="btn btn-warning">Return to list</a>
+    </form>
+
+{% endblock content %}
