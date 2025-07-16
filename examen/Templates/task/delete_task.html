@@ -1,0 +1,14 @@
+{% extends "base/base.html" %}
+
+{% block title %} DELETE TASK VIEW {% endblock title %}
+
+{% block content %}
+
+    <form action="" method="post">
+        {% csrf_token %}
+            {{ object  }}
+            <button type="submit" class="btn btn-danger">DELETE TASK</button>
+            <a href="{% url 'tasks:list_task' %}" class="btn btn-warning">Return to list</a>
+    </form>
+
+{% endblock content %}

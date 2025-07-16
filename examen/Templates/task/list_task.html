@@ -23,6 +23,7 @@
             <th>ID</th>
             <th>STATUS</th>
             <th>CHANGE</th>
+            <th>DELETE</th>
         </thead>
         <tbody>
             {% for task in tasks %}
@@ -35,7 +36,9 @@
                             Incomplete
                         {% endif %}
                         </td>
-                        <td><a href="{% url 'tasks:update_task' task.id %}" class="btn btn-warning">Update</a></td>                
+                        <td><a href="{% url 'tasks:update_task' task.id %}" class="btn btn-warning">Update</a></td>
+                        <td><a href="{% url 'tasks:delete_task' task.id %}" class="btn btn-danger">Delete</a></td>                
+            
                 </tr>
 
             {% endfor %}
@@ -51,6 +54,7 @@
             <th>TITLE</th>
             <th>STATUS</th>
             <th>CHANGE</th>
+            <th>DELETE</th>
         </thead>
         <tbody>
             {% for task in tasks %}
@@ -64,7 +68,8 @@
                             Incomplete
                         {% endif %}
                         </td>
-                        <td><a href="{% url 'tasks:update_task' task.id %}" class="btn btn-warning">Update</a></td>                
+                        <td><a href="{% url 'tasks:update_task' task.id %}" class="btn btn-warning">Update</a></td>
+                        <td><a href="{% url 'tasks:delete_task' task.id %}" class="btn btn-danger">Delete</a></td>                      
                 </tr>
 
             {% endfor %}
@@ -80,6 +85,7 @@
             <th>TITLE</th>
             <th>STATUS</th>
             <th>CHANGE</th>
+            <th>DELETE</th>
         </thead>
         <tbody>
             {% for task in tasks_sinR %}
@@ -94,9 +100,7 @@
                         {% endif %}
                         </td>
                         <td><a href="{% url 'tasks:update_task' task.id %}" class="btn btn-warning">Update</a></td>
-
-                        
-                                        
+                        <td><a href="{% url 'tasks:delete_task' task.id %}" class="btn btn-danger">Delete</a></td>      
                 </tr>
 
             {% endfor %}
@@ -112,6 +116,7 @@
             <th>TITLE</th>
             <th>STATUS</th>
             <th>CHANGE</th>
+            <th>DELETE</th>
         </thead>
         <tbody>
             {% for task in tasks_R %}
@@ -126,6 +131,7 @@
                         {% endif %}
                         </td>
                         <td><a href="{% url 'tasks:update_task' task.id %}" class="btn btn-warning">Update</a></td>
+                        <td><a href="{% url 'tasks:delete_task' task.id %}" class="btn btn-danger">Delete</a></td>      
 
                         
                                         
@@ -144,6 +150,7 @@
             <th>CREATOR</th>
             <th>STATUS</th>
             <th>CHANGE</th>
+            <th>DELETE</th>
         </thead>
         <tbody>
             {% for task in tasks %}
@@ -158,6 +165,7 @@
                         {% endif %}
                         </td>
                         <td><a href="{% url 'tasks:update_task' task.id %}" class="btn btn-warning">Update</a></td>
+                        <td><a href="{% url 'tasks:delete_task' task.id %}" class="btn btn-danger">Delete</a></td>      
 
                         
                                         
@@ -176,6 +184,7 @@
             <th>CREATOR</th>
             <th>STATUS</th>
             <th>CHANGE</th>
+            <th>DELETE</th>
         </thead>
         <tbody>
             {% for task in tasks_R %}
@@ -190,6 +199,7 @@
                         {% endif %}
                         </td>
                         <td><a href="{% url 'tasks:update_task' task.id %}" class="btn btn-warning">Update</a></td>
+                        <td><a href="{% url 'tasks:delete_task' task.id %}" class="btn btn-danger">Delete</a></td>      
 
                         
                                         
@@ -208,6 +218,7 @@
             <th>CREATOR</th>
             <th>STATUS</th>
             <th>CHANGE</th>
+            <th>DELETE</th>
         </thead>
         <tbody>
             {% for task in tasks_sinR %}
@@ -222,6 +233,7 @@
                         {% endif %}
                         </td>
                         <td><a href="{% url 'tasks:update_task' task.id %}" class="btn btn-warning">Update</a></td>
+                        <td><a href="{% url 'tasks:delete_task' task.id %}" class="btn btn-danger">Delete</a></td>      
 
                         
                                         
@@ -247,7 +259,6 @@
         });
     }
 
-    // Mostrar la primera por defecto
     window.onload = function() {
         mostrar('soloid');
     }
